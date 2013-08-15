@@ -7,28 +7,21 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.TextView;
 
 public class theLayout {
 
 	
 	//Linear Layout
-	public static LinearLayout layoutWithButton(Context context, String txtViewText,String buttonTxt){
+	public static LinearLayout layoutWithButton(Context context, String buttonTxt){
 		LinearLayout linearLayout = new LinearLayout(context);
 		LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
 		linearLayout.setLayoutParams(layoutParams);
-		
-		//TextView created
-		TextView txtView = new TextView(context);
-		txtView.setText(txtViewText);
-		
-		
+				
 		//Main button created
 		Button button = new Button(context);
 		button.setText(buttonTxt);
 		button.setId(1);
 
-		linearLayout.addView(txtView);
 		linearLayout.addView(button);
 
 		return linearLayout;
@@ -38,7 +31,7 @@ public class theLayout {
 	public static RadioGroup getOpions(Context context, String[] options){
 		RadioGroup boxes = new RadioGroup(context);
 		
-		for(int i=0; i<options.length; i++){
+		for(int i=1; i<options.length; i++){
 			RadioButton radioBtn = new RadioButton(context);
 			radioBtn.setText(options[i]);
 			radioBtn.setId(i+1);

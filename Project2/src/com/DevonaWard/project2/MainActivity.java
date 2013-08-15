@@ -26,20 +26,22 @@ public class MainActivity extends Activity {
 	String[] teamCity;
 	RadioGroup cityOptions;
 	TextView resultView;
+	TextView infoView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
 		//City_Array count
-		int teamNum = getResources().getStringArray(R.array.city_array).length;
+		int teamNum = 4;
 		context = this;
 		
 		//City Array
 		teamCity = getResources().getStringArray(R.array.city_array);
 		
 		LinearLayout linearLayout = new LinearLayout(this);
-		LinearLayout mainLayout = theLayout.layoutWithButton(this, "Select from the list of "+ teamNum +" cities.", "Ok");
+		LinearLayout mainLayout = theLayout.layoutWithButton(this, "Submit");
+		linearLayout.setOrientation(LinearLayout.VERTICAL);
 		LayoutParams layoutParams = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
 		linearLayout.setLayoutParams(layoutParams);
 		
@@ -56,19 +58,31 @@ public class MainActivity extends Activity {
 				RadioButton selectedRadio = (RadioButton)findViewById(id);
 				String selected = selectedRadio.getText().toString();
 				resultView.setText(theJSON.readJSON(selected));
+				if(id == 4){
+					infoView.setText("Jay-Z was the owner of this team!");
+				}
 			}
 			
 		});
 
+		//TextView created
+		TextView txtView = new TextView(context);
+		txtView.setText("Select from the list of "+ teamNum +" cities.");
+		
 		//Populates radio buttons using teamCity.	
 		cityOptions = theLayout.getOpions(this, teamCity);
 		
 		//Displays JSON results
-		TextView resultView = new TextView(context);
+		resultView = new TextView(context);
+		
+		//Displays a cool from a condition
+		infoView = new TextView(context);
 				
+		linearLayout.addView(txtView);
+		linearLayout.addView(cityOptions);
 		linearLayout.addView(mainLayout);
-		mainLayout.addView(cityOptions);
-		mainLayout.addView(resultView);
+		linearLayout.addView(resultView);
+		linearLayout.addView(infoView);
 
 		
 		setContentView(linearLayout);

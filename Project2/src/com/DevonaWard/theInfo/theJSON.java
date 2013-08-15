@@ -52,8 +52,8 @@ public class theJSON {
 			site = object.getJSONObject("query").getJSONObject(selected).getString("site_name");
 			divisions = object.getJSONObject("query").getJSONObject(selected).getString("division");
 			abrevi = object.getJSONObject("query").getJSONObject(selected).getString("abbreviation");
-		results = "Teams: " + team + "\r\n"
-				+"Site: " + site + "\r\n"
+		results = "Team: " + team + "\r\n"
+				+"Arena: " + site + "\r\n"
 				+"Division: " + divisions + "\r\n"
 				+"Abbreviation: " + abrevi + "\r\n";
 		} catch (JSONException e) {
